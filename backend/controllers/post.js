@@ -3,9 +3,11 @@ const User = require("../models/User");
 const cloudinary = require("cloudinary");
 exports.createPost = async (req, res) => {
   try {
+    console.log("Hello");
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
       folder: "posts",
     });
+    console.log("Hello");
     const newPostData = {
       caption: req.body.caption,
       image: {
