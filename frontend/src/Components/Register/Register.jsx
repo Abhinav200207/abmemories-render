@@ -31,7 +31,11 @@ const Register = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(registerUser(name, email, password, avatar));
+    if (avatar.length === 0) {
+      alert.error("Please selecet some profile pic");
+    } else {
+      dispatch(registerUser(name, email, password, avatar));
+    }
   };
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const Post = require("../models/Post");
-const { sendEmail } = require("../middlewares/sendEmail");
+// const { sendEmail } = require("../middlewares/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 
@@ -393,15 +393,16 @@ exports.forgotPassword = async (req, res) => {
     const message = `Reset Your Password by clicking on the link below: \n\n ${resetUrl}`;
 
     try {
-      await sendEmail({
-        email: user.email,
-        subject: "Reset Password",
-        message,
-      });
+      // await sendEmail({
+      //   email: user.email,
+      //   subject: "Reset Password",
+      //   message,
+      // });
 
       res.status(200).json({
         success: true,
-        message: `Email sent to ${user.email}`,
+        // message: `Email sent to ${user.email}`,
+        message: `This feature is still under development`,
       });
     } catch (error) {
       user.resetPasswordToken = undefined;

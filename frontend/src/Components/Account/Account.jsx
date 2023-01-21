@@ -30,8 +30,9 @@ const Account = () => {
     dispatch(logoutUser());
     alert.success("Logged out successfully");
   };
-
+  
   const deleteProfileHandler = async () => {
+    alert.success("Deleting profile please wait, it will take a while....");
     await dispatch(deleteMyProfile());
     dispatch(logoutUser());
   };
