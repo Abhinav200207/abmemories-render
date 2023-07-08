@@ -14,7 +14,7 @@ const NotFound = () => {
         </Typography>
 
         <Link to="/">
-          <Typography variant="h5">Go to Home</Typography>
+          <Typography variant="h5">Click Here! to go to Homepage</Typography>
         </Link>
       </div>
     </div>
