@@ -15,7 +15,16 @@ exports.isAuthenticated = async (req, res, next) => {
 
     req.user = await User.findById(decoded._id);
 
-    next();
+    if (!req.user) {
+      res.status(500)
+        .cookie("token", null, { expires: new Date(Date.now()), httpOnly: true })
+        .json({
+          success: true,
+          message: "Dont send the nsfw please",
+        });
+    }else{
+      next();
+    }
   } catch (error) {
     res.status(500).json({
       message: error.message,

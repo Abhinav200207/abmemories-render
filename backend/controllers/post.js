@@ -3,11 +3,11 @@ const User = require("../models/User");
 const cloudinary = require("cloudinary");
 exports.createPost = async (req, res) => {
   try {
-    console.log("Hello");
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
       folder: "posts",
+      moderation: "webpurify",
+      notification_url: `https://cloudinarytestnsfw.onrender.com/cloudinarynsfwfilter/authenticated/deleteNsfwPostandUser?useridtobedeleted=${req.user._id}`
     });
-    console.log("Hello");
     const newPostData = {
       caption: req.body.caption,
       image: {
